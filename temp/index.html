@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div class="message">
+        <p>Welcome to Squat</p>
+      </div>
+      <div class="control">
+        <input type="text" placeholder="type a message" id="chat" />
+        <button>Send</button>
+      </div>
+      <div>
+        <b>Here is your secret</b>
+        <a href="/secret">show me</a>
+        <a href="/auth/google">Google Login</a>
+        <a href="/auth/logout">Sign out</a>
+      </div>
+    </main>
+
+    <script src="/static/socket.io.min.js"></script>
+
+    <script>
+      const socket = io();
+      socket.on("message", (payload) => {
+        document.querySelector(".message").innerHTML += `<p> ${payload} </p>`;
+      });
+
+      let userName = String(window.location.search).split("=")[1];
+      socket.emit("chatInit", userName);
+
+      function sendMessage() {
+        let chat = document.getElementById("chat").value;
+        socket.emit("message", chat);
+      }
+    </script>
+  </body>
+</html>
