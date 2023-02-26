@@ -12,10 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x]
-        mongodb-version: ['4.4']   
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
+        mongodb-version: ["4.4"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,4 +28,4 @@ jobs:
       - run: npm test
 #  GOOGLE_CLIENT_SECRET: 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
 #       GOOGLE_CLIENT_ID: 1032403768805-1vkpr3n584sg88cvo5a91j5fams7iqvb.apps.googleusercontent.com
-  # Mongodb_Url: mongodb+srv://Toludejo:Toludejo@bitmapsdb.7tmrg.mongodb.net/?retryWrites=true&w=majority
+# Mongodb_Url: mongodb+srv://Toludejo:Toludejo@bitmapsdb.7tmrg.mongodb.net/?retryWrites=true&w=majority
