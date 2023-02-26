@@ -8,6 +8,12 @@ jobs:
   build:
     env:
       CI: true
+      MONGO_URL: mongodb://localhost/nasa
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+        mongodb-version: ['4.4']   
+     
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -16,7 +22,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Use Node.js  ${{ matrix.node-version }}
         uses: actions/setup-node@v2
-        with:
           node-version: ${{ matrix.node-version }}
+      - name: Use MongoDB in Github Actions
+        uses: MongoCamp/mongodb-github-action@1.2.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
       - run: npm install
-      # - run: npm test
+      - run: npm test
+#  GOOGLE_CLIENT_SECRET: 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
+#       GOOGLE_CLIENT_ID: 1032403768805-1vkpr3n584sg88cvo5a91j5fams7iqvb.apps.googleusercontent.com
+  # Mongodb_Url: mongodb+srv://Toludejo:Toludejo@bitmapsdb.7tmrg.mongodb.net/?retryWrites=true&w=majority
