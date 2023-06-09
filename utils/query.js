@@ -6,7 +6,7 @@ function getPadination(query) {
     const limit = Math.abs(query.limit) || defaultPageLimit
     const page = Math.abs(query.page) || defaultPageNumber
 
-    console.log("page", page);
+    // console.log("page", page);
 
     const skip = (page-1) * limit
 
